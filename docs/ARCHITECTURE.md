@@ -1,598 +1,679 @@
-TaskFlow Architecture Documentation
-Comprehensive guide to TaskFlow's code structure, design patterns, and technical implementation
+# Contributing to TaskFlow
 
-📋 Table of Contents
-Overview
-Project Structure
-HTML Architecture
-CSS Architecture
-JavaScript Architecture
-Data Flow
-Design Patterns
-Performance Considerations
-Browser Compatibility
-Security Considerations
-🎯 Overview
-TaskFlow follows a modern, vanilla JavaScript architecture with a focus on:
+> Thank you for your interest in contributing to TaskFlow! This guide will help you get started with contributing to our task management application.
 
-Separation of Concerns: HTML structure, CSS presentation, JavaScript behavior
-Component-based Design: Modular, reusable code structure
-Progressive Enhancement: Works without JavaScript (basic functionality)
-Mobile-First: Responsive design from the ground up
-Accessibility: WCAG 2.1 compliant structure
-Technology Stack
-HTML5: Semantic markup with modern standards
-CSS3: Modern styling with Flexbox, Grid, and custom properties
-JavaScript ES6+: Class-based architecture with modern syntax
-Local Storage API: Client-side data persistence
-No Dependencies: Pure vanilla implementation
-📁 Project Structure
-taskflow/
-├── index.html              # Main HTML document
-├── styles/
-│   └── main.css            # Complete stylesheet
-├── scripts/
-│   └── app.js              # Application JavaScript
-├── docs/                   # Documentation
-│   ├── SETUP.md           # Setup instructions
-│   ├── FEATURES.md        # Feature documentation
-│   ├── ARCHITECTURE.md    # This document
-│   └── CONTRIBUTING.md    # Contribution guidelines
-├── .gitignore             # Git ignore rules
-├── LICENSE                # MIT license
-└── README.md              # Project overview
-File Organization Philosophy
-Single Page Application: One HTML file as entry point
-Modular Stylesheets: CSS organized by component sections
-Class-based JavaScript: Single JavaScript class managing all functionality
-Documentation-First: Comprehensive docs for maintainability
-🏗️ HTML Architecture
-Semantic Structure
-<!DOCTYPE html>
-<html lang="en">                    <!-- Language declaration -->
-<head>                              <!-- Document metadata -->
-<body>
-  <div class="container">           <!-- Main container -->
-    <header class="header">         <!-- Application header -->
-    <main class="main">             <!-- Primary content -->
-      <section class="task-input-section">   <!-- Task input area -->
-      <section class="tasks-section">        <!-- Task display area -->
-      <section class="stats-section">        <!-- Statistics display -->
-    </main>
-    <footer class="footer">         <!-- Application footer -->
-  </div>
-</body>
-</html>
-Component Breakdown
-Header Component
-<header class="header">
-  <div class="header-content">
-    <h1 class="app-title">
-      <span class="icon">📋</span>
-      TaskFlow
-    </h1>
-    <p class="app-subtitle">Streamline your productivity</p>
-  </div>
-</header>
-Purpose: Brand identity and application introduction Features: Logo, title, subtitle with semantic hierarchy
+## 📋 Table of Contents
 
-Task Input Component
-<div class="task-input-section">
-  <div class="input-container">
-    <input type="text" id="taskInput" placeholder="What needs to be done?" class="task-input">
-    <button id="addTaskBtn" class="add-btn">
-      <span class="add-icon">+</span>
-      Add Task
-    </button>
-  </div>
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [How to Contribute](#how-to-contribute)
+- [Coding Standards](#coding-standards)
+- [Commit Guidelines](#commit-guidelines)
+- [Pull Request Process](#pull-request-process)
+- [Issue Guidelines](#issue-guidelines)
+- [Testing Guidelines](#testing-guidelines)
+- [Documentation](#documentation)
+- [Community](#community)
+
+## 📖 Code of Conduct
+
+By participating in this project, you agree to abide by our Code of Conduct. We are committed to providing a welcoming and inclusive environment for all contributors.
+
+### Our Standards
+
+**Positive behaviors include:**
+- Using welcoming and inclusive language
+- Being respectful of differing viewpoints and experiences
+- Gracefully accepting constructive criticism
+- Focusing on what is best for the community
+- Showing empathy towards other community members
+
+**Unacceptable behaviors include:**
+- The use of sexualized language or imagery
+- Personal attacks or derogatory comments
+- Public or private harassment
+- Publishing others' private information without permission
+- Other conduct which could reasonably be considered inappropriate
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have:
+- **Git** installed and configured
+- A **GitHub account**
+- A modern **web browser** for testing
+- **Basic knowledge** of HTML, CSS, and JavaScript
+
+### First Contribution
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally:
+   ```bash
+   git clone https://github.com/your-username/taskflow.git
+   cd taskflow
+   ```
+3. **Set up upstream remote**:
+   ```bash
+   git remote add upstream https://github.com/original-owner/taskflow.git
+   ```
+4. **Create a branch** for your contribution:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+## 💻 Development Setup
+
+### Local Development Environment
+
+1. **Open the project** in your preferred editor:
+   ```bash
+   code taskflow  # VS Code
+   # OR open in any text editor
+   ```
+
+2. **Start a local server** (optional):
+   ```bash
+   # Using VS Code Live Server extension
+   # Right-click index.html → "Open with Live Server"
+   
+   # OR using Python
+   python -m http.server 8000
+   
+   # OR using Node.js
+   npx serve .
+   ```
+
+3. **Open in browser**:
+   - Direct: Open `index.html` in your browser
+   - Server: Visit `http://localhost:8000`
+
+### Recommended VS Code Extensions
+
+```json
+{
+  "recommendations": [
+    "ritwickdey.liveserver",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense"
+  ]
+}
+```
+
+## 🤝 How to Contribute
+
+### Types of Contributions
+
+We welcome various types of contributions:
+
+#### 🐛 Bug Reports
+- Use the bug report template
+- Include steps to reproduce
+- Provide browser and OS information
+- Add screenshots if applicable
+
+#### ✨ Feature Requests  
+- Use the feature request template
+- Explain the problem it solves
+- Describe the proposed solution
+- Consider alternatives
+
+#### 📚 Documentation
+- Fix typos or unclear explanations
+- Add examples or tutorials
+- Improve API documentation
+- Translate content
+
+#### 🎨 Design Improvements
+- UI/UX enhancements
+- Accessibility improvements
+- Mobile responsiveness
+- Animation refinements
+
+#### 🔧 Code Contributions
+- Bug fixes
+- New features
+- Performance improvements
+- Refactoring
+
+### Contribution Workflow
+
+1. **Check existing issues** to avoid duplicates
+2. **Create an issue** to discuss major changes
+3. **Fork and clone** the repository
+4. **Create a feature branch** from main
+5. **Make your changes** following coding standards
+6. **Test thoroughly** across browsers
+7. **Commit** with conventional commit messages
+8. **Push** to your fork
+9. **Create a Pull Request** using the template
+10. **Respond to feedback** during review
+
+## 📝 Coding Standards
+
+### HTML Guidelines
+
+#### Structure and Semantics
+```html
+<!-- ✅ Good: Semantic HTML -->
+<article class="task-item">
+  <h3 class="task-title">Task Title</h3>
+  <p class="task-description">Task description</p>
+  <button type="button" class="btn btn-primary">Action</button>
+</article>
+
+<!-- ❌ Bad: Non-semantic -->
+<div class="task-item">
+  <div class="task-title">Task Title</div>
+  <div class="task-description">Task description</div>
+  <div class="btn btn-primary" onclick="doSomething()">Action</div>
 </div>
-Purpose: Task creation interface Features: Form input, submit button, keyboard support
+```
 
-Task List Component
-<div class="tasks-section">
-  <div class="tasks-header">
-    <h2>Your Tasks</h2>
-    <span id="taskCount" class="task-count">0 tasks</span>
-  </div>
-  <div id="tasksList" class="tasks-list">
-    <!-- Dynamically generated task items -->
-  </div>
-  <div id="emptyState" class="empty-state">
-    <!-- Empty state message -->
-  </div>
-</div>
-Purpose: Task display and management Features: Dynamic list, empty state, task counter
+#### Accessibility Requirements
+- Use semantic HTML elements
+- Include ARIA labels where needed
+- Ensure proper heading hierarchy
+- Provide alt text for images
+- Support keyboard navigation
 
-Statistics Component
-<div class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-card">
-      <span class="stat-number" id="totalTasks">0</span>
-      <span class="stat-label">Total Tasks</span>
-    </div>
-    <!-- Additional stat cards -->
-  </div>
-</div>
-Purpose: Progress visualization Features: Real-time statistics, grid layout
+### CSS Guidelines
 
-Accessibility Features
-Semantic HTML5: Proper element hierarchy
-ARIA Labels: Screen reader support
-Keyboard Navigation: Tab order and focus management
-Color Contrast: WCAG AA compliant colors
-Focus Indicators: Visible focus states
-🎨 CSS Architecture
-Organization Strategy
-/* 1. Reset and Base Styles */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+#### Organization
+```css
+/* ✅ Good: Organized CSS */
+/* ==========================================================================
+   Component: Task Item
+   ========================================================================== */
 
-/* 2. Typography and Variables */
-:root { --primary-color: #667eea; }
-
-/* 3. Layout Components */
-.container { /* Main layout */ }
-.header { /* Header styling */ }
-
-/* 4. UI Components */
-.task-input { /* Input styling */ }
-.task-item { /* Task item styling */ }
-
-/* 5. Utilities and States */
-.completed { /* Completed task state */ }
-
-/* 6. Responsive Design */
-@media (max-width: 768px) { /* Mobile styles */ }
-
-/* 7. Animations */
-@keyframes slideIn { /* Animation definitions */ }
-CSS Methodology
-Component-Based: Each component has dedicated styles
-BEM-like Naming: .component__element--modifier pattern
-Custom Properties: CSS variables for consistency
-Mobile-First: Base styles for mobile, enhanced for desktop
-Design System
-:root {
-  /* Color Palette */
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --background-white: rgba(255, 255, 255, 0.95);
-  --text-primary: #2d3748;
-  --text-secondary: #718096;
-  
-  /* Spacing Scale */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  
-  /* Typography Scale */
-  --font-size-sm: 0.9rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xl: 1.5rem;
-  
-  /* Border Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-}
-Responsive Breakpoints
-/* Mobile First Approach */
-.container {
-  /* Base: Mobile styles (< 480px) */
-  padding: 1rem 0.5rem;
-}
-
-@media (min-width: 480px) {
-  /* Tablet styles (480px - 768px) */
-  .container { padding: 1.5rem 1rem; }
-}
-
-@media (min-width: 768px) {
-  /* Desktop styles (> 768px) */
-  .container { padding: 2rem 1rem; }
-}
-💻 JavaScript Architecture
-Class-Based Structure
-class TaskFlow {
-  constructor() {
-    // Initialize application state
-    this.tasks = this.loadTasks();
-    this.taskIdCounter = this.getNextTaskId();
-    
-    // Setup application
-    this.initializeApp();
-    this.bindEvents();
-    this.renderTasks();
-    this.updateStats();
-  }
-  
-  // Core Methods
-  addTask() { /* Task creation logic */ }
-  deleteTask(taskId) { /* Task deletion logic */ }
-  toggleTask(taskId) { /* Task completion logic */ }
-  editTask(taskId) { /* Task editing logic */ }
-  
-  // Render Methods
-  renderTasks() { /* DOM manipulation */ }
-  updateStats() { /* Statistics calculation */ }
-  
-  // Data Methods
-  saveTasks() { /* LocalStorage persistence */ }
-  loadTasks() { /* Data retrieval */ }
-  
-  // Utility Methods
-  escapeHtml(unsafe) { /* XSS protection */ }
-  showNotification(message, type) { /* User feedback */ }
-}
-Application Lifecycle
-// 1. DOM Content Loaded
-document.addEventListener('DOMContentLoaded', () => {
-  window.taskFlow = new TaskFlow();
-});
-
-// 2. Constructor Execution
-constructor() {
-  this.tasks = this.loadTasks();           // Load saved data
-  this.taskIdCounter = this.getNextTaskId(); // Initialize ID counter
-  this.initializeApp();                    // Setup application
-  this.bindEvents();                       // Attach event listeners
-  this.renderTasks();                      // Initial render
-  this.updateStats();                      // Update statistics
-}
-
-// 3. Event Binding
-bindEvents() {
-  const addTaskBtn = document.getElementById('addTaskBtn');
-  const taskInput = document.getElementById('taskInput');
-  
-  addTaskBtn.addEventListener('click', () => this.addTask());
-  taskInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') this.addTask();
-  });
-}
-State Management
-class TaskFlow {
-  constructor() {
-    // Application State
-    this.tasks = [];              // Task collection
-    this.taskIdCounter = 1;       // Unique ID generator
-  }
-  
-  // State Mutations
-  addTask() {
-    const newTask = {
-      id: this.taskIdCounter++,
-      text: taskText,
-      completed: false,
-      createdAt: new Date().toISOString(),
-      completedAt: null
-    };
-    
-    this.tasks.push(newTask);     // Mutate state
-    this.saveTasks();             // Persist changes
-    this.renderTasks();           // Update UI
-    this.updateStats();           // Refresh statistics
-  }
-}
-Data Models
-// Task Model
-const taskSchema = {
-  id: Number,                    // Unique identifier
-  text: String,                  // Task description
-  completed: Boolean,            // Completion status
-  createdAt: String,             // ISO timestamp
-  completedAt: String | null     // ISO timestamp or null
-};
-
-// Example Task Object
-const exampleTask = {
-  id: 1,
-  text: "Complete architecture documentation",
-  completed: false,
-  createdAt: "2024-01-15T10:30:00.000Z",
-  completedAt: null
-};
-🔄 Data Flow
-User Interaction Flow
-User Action → Event Listener → Method Call → State Update → DOM Render
-Detailed Flow Example: Adding a Task
-1. User types in input field
-2. User clicks "Add Task" or presses Enter
-3. Event listener calls addTask() method
-4. addTask() validates input
-5. Creates new task object
-6. Adds to tasks array
-7. Calls saveTasks() to persist data
-8. Calls renderTasks() to update DOM
-9. Calls updateStats() to refresh counters
-10. Shows success notification
-11. Clears input field
-12. Focuses input for next task
-Data Persistence Flow
-// Save Flow
-User Action → State Change → saveTasks() → localStorage.setItem()
-
-// Load Flow
-Page Load → loadTasks() → localStorage.getItem() → JSON.parse() → State Hydration
-
-// Error Handling
-Try/Catch → Error Logging → Graceful Fallback → User Notification
-🎯 Design Patterns
-Module Pattern
-// Encapsulation through class
-class TaskFlow {
-  // Private-like methods (convention)
-  #validateInput(text) {
-    return text && text.trim().length > 0;
-  }
-  
-  // Public methods
-  addTask() {
-    const input = document.getElementById('taskInput');
-    if (this.#validateInput(input.value)) {
-      // Process task addition
-    }
-  }
-}
-Observer Pattern (Event-Driven)
-// Event listeners act as observers
-bindEvents() {
-  // Observe input events
-  taskInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') this.addTask();
-  });
-  
-  // Observe button clicks
-  addTaskBtn.addEventListener('click', () => this.addTask());
-}
-Command Pattern (Method Chaining)
-// Sequential operations
-addTask() {
-  const newTask = this.createTask(taskText);
-  this.tasks.push(newTask);
-  this.saveTasks()
-      .renderTasks()
-      .updateStats()
-      .showNotification('Task added!');
-}
-Factory Pattern (Task Creation)
-createTask(text) {
-  return {
-    id: this.taskIdCounter++,
-    text: text.trim(),
-    completed: false,
-    createdAt: new Date().toISOString(),
-    completedAt: null
-  };
-}
-⚡ Performance Considerations
-DOM Manipulation Optimization
-// Batch DOM updates
-renderTasks() {
-  const tasksList = document.getElementById('tasksList');
-  
-  // Single DOM update instead of multiple
-  tasksList.innerHTML = this.tasks.map(task => 
-    this.generateTaskHTML(task)
-  ).join('');
-  
-  // Avoid layout thrashing
-  requestAnimationFrame(() => {
-    this.updateStats();
-  });
-}
-Memory Management
-// Clean event listeners
-destructor() {
-  // Remove event listeners if needed
-  document.removeEventListener('click', this.handleClick);
-}
-
-// Efficient data structures
-loadTasks() {
-  try {
-    const saved = localStorage.getItem('taskflow_tasks');
-    // Parse once, use everywhere
-    return saved ? JSON.parse(saved) : [];
-  } catch (error) {
-    console.error('Failed to load tasks:', error);
-    return []; // Graceful fallback
-  }
-}
-Lazy Loading & Code Splitting
-// Conditional feature loading
-showAdvancedFeatures() {
-  if (this.tasks.length > 10) {
-    // Load advanced features only when needed
-    import('./advanced-features.js').then(module => {
-      module.initAdvancedFeatures();
-    });
-  }
-}
-🌐 Browser Compatibility
-Feature Detection
-// Check for localStorage support
-constructor() {
-  this.hasLocalStorage = this.checkLocalStorageSupport();
-  if (!this.hasLocalStorage) {
-    console.warn('LocalStorage not supported - tasks won\'t persist');
-  }
-}
-
-checkLocalStorageSupport() {
-  try {
-    const test = 'test';
-    localStorage.setItem(test, test);
-    localStorage.removeItem(test);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-Polyfills and Fallbacks
-// Array.find polyfill for older browsers
-if (!Array.prototype.find) {
-  Array.prototype.find = function(predicate) {
-    for (let i = 0; i < this.length; i++) {
-      if (predicate(this[i], i, this)) {
-        return this[i];
-      }
-    }
-    return undefined;
-  };
-}
-CSS Fallbacks
-/* Progressive enhancement */
 .task-item {
-  /* Fallback for older browsers */
-  display: block;
-  margin-bottom: 1rem;
-  
-  /* Modern browsers */
+  /* Layout properties */
   display: flex;
   align-items: center;
-  gap: 1rem;
+  
+  /* Box model */
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  
+  /* Visual properties */
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  
+  /* Interactive properties */
+  transition: all 0.3s ease;
 }
 
-/* Feature queries */
-@supports (display: grid) {
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
+.task-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-🔒 Security Considerations
-XSS Prevention
-// HTML escaping for user input
-escapeHtml(unsafe) {
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+```
+
+#### Naming Conventions
+- Use **BEM methodology**: `.component__element--modifier`
+- Use **kebab-case** for class names
+- Use **semantic names** that describe purpose, not appearance
+
+```css
+/* ✅ Good */
+.task-item__title--completed { }
+.button--primary { }
+.form__input--error { }
+
+/* ❌ Bad */
+.red-text { }
+.big-button { }
+.left-box { }
+```
+
+#### Responsive Design
+```css
+/* Mobile-first approach */
+.container {
+  padding: 1rem;
 }
 
-// Safe DOM insertion
-renderTasks() {
-  tasksList.innerHTML = this.tasks.map(task => `
-    <div class="task-item">
-      <span class="task-text">${this.escapeHtml(task.text)}</span>
-    </div>
-  `).join('');
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
 }
-Input Validation
-addTask() {
-  const taskInput = document.getElementById('taskInput');
-  const taskText = taskInput.value.trim();
-  
-  // Validation checks
-  if (!taskText) {
-    this.showNotification('Please enter a task description', 'warning');
-    return;
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem;
+  }
+}
+```
+
+### JavaScript Guidelines
+
+#### ES6+ Modern Syntax
+```javascript
+// ✅ Good: Modern JavaScript
+class TaskManager {
+  constructor(options = {}) {
+    this.tasks = [];
+    this.options = { ...this.defaultOptions, ...options };
   }
   
-  if (taskText.length > 500) {
-    this.showNotification('Task description too long', 'error');
-    return;
-  }
-  
-  // Sanitize input
-  const sanitizedText = this.sanitizeInput(taskText);
-  // Proceed with task creation
-}
-Data Integrity
-// Validate data structure on load
-loadTasks() {
-  try {
-    const saved = localStorage.getItem('taskflow_tasks');
-    const parsed = saved ? JSON.parse(saved) : [];
+  addTask(text) {
+    if (!this.validateTask(text)) {
+      throw new Error('Invalid task text');
+    }
     
-    // Validate data structure
-    return parsed.filter(task => 
-      task &&
-      typeof task.id === 'number' &&
-      typeof task.text === 'string' &&
-      typeof task.completed === 'boolean'
-    );
+    const newTask = {
+      id: this.generateId(),
+      text: text.trim(),
+      completed: false,
+      createdAt: new Date().toISOString()
+    };
+    
+    this.tasks = [...this.tasks, newTask];
+    this.saveToStorage();
+    this.render();
+  }
+  
+  // Use arrow functions for methods that don't need 'this' context
+  validateTask = (text) => {
+    return text && typeof text === 'string' && text.trim().length > 0;
+  }
+}
+```
+
+#### Error Handling
+```javascript
+// ✅ Good: Comprehensive error handling
+async function saveTask(task) {
+  try {
+    validateTask(task);
+    await persistToStorage(task);
+    showSuccessMessage('Task saved successfully');
   } catch (error) {
-    console.error('Invalid data in localStorage:', error);
-    return [];
-  }
-}
-🧪 Testing Considerations
-Testable Architecture
-// Expose methods for testing
-class TaskFlow {
-  // Public API for tests
-  getTaskById(id) {
-    return this.tasks.find(task => task.id === id);
-  }
-  
-  getTaskCount() {
-    return this.tasks.length;
-  }
-  
-  // Mockable dependencies
-  getCurrentTime() {
-    return new Date().toISOString();
+    console.error('Failed to save task:', error);
+    showErrorMessage('Failed to save task. Please try again.');
+    // Don't throw in UI event handlers
   }
 }
 
-// Export for testing
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = TaskFlow;
-}
-Manual Testing Checklist
- Task creation with various inputs
- Task completion toggling
- Task editing with edge cases
- Task deletion confirmation
- Statistics accuracy
- localStorage persistence
- Responsive design breakpoints
- Keyboard navigation
- Error handling
- Browser compatibility
-🔮 Future Architecture Enhancements
-Planned Improvements
-Component System: Break into smaller, reusable components
-State Management: Implement Redux-like state management
-Module System: Split into ES6 modules
-Service Workers: Add offline functionality
-Web Components: Custom elements for reusability
-TypeScript: Add type safety
-Testing Framework: Automated testing setup
-Build System: Webpack/Vite configuration
-Scalability Considerations
-// Future modular structure
-import { TaskStore } from './stores/TaskStore.js';
-import { TaskComponent } from './components/TaskComponent.js';
-import { StatsComponent } from './components/StatsComponent.js';
-import { NotificationService } from './services/NotificationService.js';
-
-class TaskFlowApp {
-  constructor() {
-    this.store = new TaskStore();
-    this.taskComponent = new TaskComponent(this.store);
-    this.statsComponent = new StatsComponent(this.store);
-    this.notifications = new NotificationService();
+// ✅ Good: Input validation
+function validateTask(task) {
+  if (!task) {
+    throw new Error('Task is required');
+  }
+  
+  if (typeof task.text !== 'string' || task.text.trim().length === 0) {
+    throw new Error('Task text must be a non-empty string');
+  }
+  
+  if (task.text.length > 500) {
+    throw new Error('Task text must be less than 500 characters');
   }
 }
-📚 Additional Resources
-Learning Resources
-MDN Web Docs - Web standards reference
-JavaScript.info - Modern JavaScript tutorial
-CSS Grid Guide - CSS Grid reference
-Accessibility Guidelines - WCAG 2.1 reference
-Development Tools
-Browser DevTools: Chrome/Firefox/Safari developer tools
-VS Code Extensions: Live Server, ESLint, Prettier
-Performance Tools: Lighthouse, WebPageTest
-Accessibility Tools: axe DevTools, WAVE
-Best Practices
-Google Web Fundamentals
-Clean Code JavaScript
-Airbnb JavaScript Style Guide
-This architecture documentation provides a comprehensive overview of TaskFlow's technical implementation. For specific implementation details, refer to the source code files and inline comments.
+```
+
+#### DOM Manipulation
+```javascript
+// ✅ Good: Safe DOM manipulation
+function renderTask(task) {
+  const taskElement = document.createElement('div');
+  taskElement.className = 'task-item';
+  taskElement.setAttribute('data-task-id', task.id);
+  
+  // Use textContent for user data to prevent XSS
+  const titleElement = document.createElement('h3');
+  titleElement.textContent = task.text;
+  titleElement.className = 'task-item__title';
+  
+  taskElement.appendChild(titleElement);
+  return taskElement;
+}
+
+// ❌ Bad: XSS vulnerable
+function renderTaskBad(task) {
+  return `<div class="task-item">${task.text}</div>`;
+}
+```
+
+### File Organization
+
+```
+taskflow/
+├── index.html              # Entry point
+├── styles/
+│   └── main.css           # All styles (organized by components)
+├── scripts/
+│   └── app.js             # Main application logic
+├── docs/                  # Documentation
+├── .github/              # GitHub templates
+└── assets/               # Images, icons (if needed)
+```
+
+## 📨 Commit Guidelines
+
+### Commit Message Format
+
+We use [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+#### Types
+- **feat**: A new feature
+- **fix**: A bug fix
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **perf**: A code change that improves performance
+- **test**: Adding missing tests or correcting existing tests
+- **chore**: Changes to the build process or auxiliary tools
+
+#### Examples
+```bash
+# ✅ Good commit messages
+git commit -m "feat: add task priority levels"
+git commit -m "fix: resolve localStorage data corruption on Safari"
+git commit -m "docs: update API documentation for task creation"
+git commit -m "style: improve mobile responsiveness for task list"
+git commit -m "refactor: extract task validation into separate method"
+
+# ❌ Bad commit messages
+git commit -m "fixed stuff"
+git commit -m "update"
+git commit -m "changes"
+```
+
+#### Detailed Commit Example
+```
+feat(tasks): add task priority levels
+
+Allow users to assign priority levels (High, Medium, Low) to tasks.
+Tasks are now sorted by priority in the task list.
+
+- Add priority field to task model
+- Update task creation form with priority selector
+- Implement priority-based sorting algorithm
+- Add priority indicators in task list UI
+
+Closes #123
+```
+
+## 🔍 Pull Request Process
+
+### Before Creating a Pull Request
+
+1. **Sync your fork** with upstream:
+   ```bash
+   git fetch upstream
+   git checkout main
+   git merge upstream/main
+   ```
+
+2. **Rebase your feature branch**:
+   ```bash
+   git checkout feature/your-feature
+   git rebase main
+   ```
+
+3. **Test thoroughly**:
+   - [ ] Test in multiple browsers
+   - [ ] Test on mobile devices
+   - [ ] Verify accessibility
+   - [ ] Check for console errors
+
+4. **Run quality checks**:
+   - [ ] Code follows style guidelines
+   - [ ] All tests pass (if applicable)
+   - [ ] Documentation is updated
+   - [ ] No linting errors
+
+### Pull Request Template
+
+When creating a PR, use our template and ensure you:
+
+- **Provide clear description** of changes
+- **Reference related issues** using keywords
+- **Include screenshots** for UI changes  
+- **List testing steps** you performed
+- **Check all applicable boxes** in the template
+
+### Review Process
+
+1. **Automated checks** must pass
+2. **At least one maintainer** reviews the code
+3. **Address feedback** promptly and respectfully
+4. **Update documentation** if needed
+5. **Squash commits** if requested before merge
+
+## 🐛 Issue Guidelines
+
+### Before Creating an Issue
+
+1. **Search existing issues** to avoid duplicates
+2. **Check FAQ and documentation** first
+3. **Use the latest version** of the application
+4. **Gather relevant information** (browser, OS, steps to reproduce)
+
+### Issue Templates
+
+#### Bug Report
+```markdown
+**Bug Description**
+A clear description of what the bug is.
+
+**Steps to Reproduce**
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected Behavior**
+What you expected to happen.
+
+**Screenshots**
+Add screenshots to help explain the problem.
+
+**Environment**
+- Browser: [e.g. Chrome 91]
+- OS: [e.g. macOS 11.4]
+- Device: [e.g. iPhone 12, Desktop]
+```
+
+#### Feature Request
+```markdown
+**Feature Description**
+A clear description of what you want to happen.
+
+**Problem Statement**
+What problem does this feature solve?
+
+**Proposed Solution**
+Describe your preferred solution.
+
+**Alternatives Considered**
+Any alternative solutions you've considered.
+
+**Additional Context**
+Any other context or screenshots about the feature request.
+```
+
+## 🧪 Testing Guidelines
+
+### Manual Testing Checklist
+
+Before submitting changes, test:
+
+#### Functionality Testing
+- [ ] **Task Creation**: Add tasks with various inputs
+- [ ] **Task Completion**: Toggle completion status
+- [ ] **Task Editing**: Modify task text
+- [ ] **Task Deletion**: Remove tasks with confirmation
+- [ ] **Statistics**: Verify counters update correctly
+- [ ] **Persistence**: Data survives page refresh
+
+#### Browser Testing
+- [ ] **Chrome** (latest)
+- [ ] **Firefox** (latest)
+- [ ] **Safari** (latest)
+- [ ] **Edge** (latest)
+
+#### Device Testing
+- [ ] **Desktop** (1920x1080)
+- [ ] **Tablet** (768x1024)
+- [ ] **Mobile** (375x667)
+
+#### Accessibility Testing
+- [ ] **Keyboard navigation** works
+- [ ] **Screen reader compatibility**
+- [ ] **Color contrast** meets standards
+- [ ] **Focus indicators** are visible
+
+### Performance Testing
+
+Check for:
+- [ ] **No memory leaks** in long sessions
+- [ ] **Smooth animations** at 60fps
+- [ ] **Fast load times** (<3 seconds)
+- [ ] **Responsive interactions** (<100ms)
+
+## 📚 Documentation
+
+### Code Comments
+
+```javascript
+/**
+ * Creates a new task with validation
+ * @param {string} text - The task description
+ * @param {string} [priority='medium'] - Task priority level
+ * @returns {Object} The created task object
+ * @throws {Error} When text is invalid
+ */
+function createTask(text, priority = 'medium') {
+  // Validate input parameters
+  if (!text || typeof text !== 'string') {
+    throw new Error('Task text must be a non-empty string');
+  }
+  
+  // Create task object with current timestamp
+  return {
+    id: generateUniqueId(),
+    text: text.trim(),
+    priority,
+    completed: false,
+    createdAt: new Date().toISOString()
+  };
+}
+```
+
+### Documentation Updates
+
+When making changes, update relevant documentation:
+
+- **README.md**: For user-facing features
+- **ARCHITECTURE.md**: For structural changes
+- **FEATURES.md**: For new functionality
+- **API.md**: For API changes (if applicable)
+
+## 🎯 Best Practices
+
+### General Guidelines
+
+1. **Start small**: Make focused, single-purpose changes
+2. **Test thoroughly**: Ensure changes work across environments
+3. **Document changes**: Update relevant documentation
+4. **Follow conventions**: Stick to established patterns
+5. **Ask questions**: Don't hesitate to seek clarification
+
+### Code Quality
+
+1. **Write readable code**: Clear variable names, logical structure
+2. **Handle errors gracefully**: Provide meaningful error messages
+3. **Optimize performance**: Consider impact on load times and responsiveness
+4. **Ensure accessibility**: Make features usable by everyone
+5. **Test edge cases**: Consider unusual inputs and scenarios
+
+### Communication
+
+1. **Be respectful**: Treat all contributors with kindness
+2. **Be constructive**: Provide helpful, actionable feedback
+3. **Be patient**: Allow time for review and discussion
+4. **Be collaborative**: Work together to find the best solutions
+
+## 🏆 Recognition
+
+### Contributors
+
+We recognize contributors in several ways:
+
+- **Contributors page** on our website
+- **Changelog mentions** for significant contributions
+- **Social media shoutouts** for major features
+- **Maintainer status** for consistent, high-quality contributions
+
+### Contribution Types
+
+We value all types of contributions:
+- Code contributions
+- Bug reports and testing
+- Documentation improvements
+- Design feedback and suggestions
+- Community support and mentoring
+
+## 🆘 Getting Help
+
+### Need Assistance?
+
+- **GitHub Discussions**: For general questions and discussion
+- **GitHub Issues**: For bug reports and feature requests
+- **Documentation**: Check our comprehensive docs
+- **Code Comments**: Review inline documentation
+
+### Contact Maintainers
+
+- Create an issue with the `question` label
+- Start a discussion in GitHub Discussions
+- Mention maintainers in relevant issues or PRs
+
+## 📞 Community
+
+### Stay Connected
+
+- **GitHub Discussions**: Join conversations about the project
+- **Issue Tracker**: Follow project progress
+- **Pull Requests**: Review and comment on changes
+- **Social Media**: Follow updates and announcements
+
+### Contributing Guidelines Summary
+
+1. **Fork and clone** the repository
+2. **Create a feature branch** for your changes
+3. **Follow coding standards** and conventions
+4. **Write clear commit messages** using conventional format
+5. **Test thoroughly** across browsers and devices
+6. **Create detailed pull requests** using the template
+7. **Respond to feedback** during the review process
+8. **Update documentation** as needed
+
+---
+
+## 🎉 Thank You!
+
+Thank you for taking the time to contribute to TaskFlow! Your efforts help make this project better for everyone. Whether you're fixing a bug, adding a feature, or improving documentation, every contribution is valuable and appreciated.
+
+**Happy coding! 🚀**
+
+---
+
+*This contributing guide is a living document. If you have suggestions for improvements, please open an issue or submit a pull request.*

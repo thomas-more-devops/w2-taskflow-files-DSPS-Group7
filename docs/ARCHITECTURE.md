@@ -1,32 +1,39 @@
-TaskFlow Architecture Documentation
-Comprehensive guide to TaskFlow's code structure, design patterns, and technical implementation
+# TaskFlow Architecture Documentation
 
-📋 Table of Contents
-Overview
-Project Structure
-HTML Architecture
-CSS Architecture
-JavaScript Architecture
-Data Flow
-Design Patterns
-Performance Considerations
-Browser Compatibility
-Security Considerations
-🎯 Overview
+> Comprehensive guide to TaskFlow's code structure, design patterns, and technical implementation
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [HTML Architecture](#html-architecture)
+- [CSS Architecture](#css-architecture)
+- [JavaScript Architecture](#javascript-architecture)
+- [Data Flow](#data-flow)
+- [Design Patterns](#design-patterns)
+- [Performance Considerations](#performance-considerations)
+- [Browser Compatibility](#browser-compatibility)
+- [Security Considerations](#security-considerations)
+
+## 🎯 Overview
+
 TaskFlow follows a modern, vanilla JavaScript architecture with a focus on:
+- **Separation of Concerns**: HTML structure, CSS presentation, JavaScript behavior
+- **Component-based Design**: Modular, reusable code structure
+- **Progressive Enhancement**: Works without JavaScript (basic functionality)
+- **Mobile-First**: Responsive design from the ground up
+- **Accessibility**: WCAG 2.1 compliant structure
 
-Separation of Concerns: HTML structure, CSS presentation, JavaScript behavior
-Component-based Design: Modular, reusable code structure
-Progressive Enhancement: Works without JavaScript (basic functionality)
-Mobile-First: Responsive design from the ground up
-Accessibility: WCAG 2.1 compliant structure
-Technology Stack
-HTML5: Semantic markup with modern standards
-CSS3: Modern styling with Flexbox, Grid, and custom properties
-JavaScript ES6+: Class-based architecture with modern syntax
-Local Storage API: Client-side data persistence
-No Dependencies: Pure vanilla implementation
-📁 Project Structure
+### Technology Stack
+- **HTML5**: Semantic markup with modern standards
+- **CSS3**: Modern styling with Flexbox, Grid, and custom properties
+- **JavaScript ES6+**: Class-based architecture with modern syntax
+- **Local Storage API**: Client-side data persistence
+- **No Dependencies**: Pure vanilla implementation
+
+## 📁 Project Structure
+
+```
 taskflow/
 ├── index.html              # Main HTML document
 ├── styles/
@@ -41,13 +48,18 @@ taskflow/
 ├── .gitignore             # Git ignore rules
 ├── LICENSE                # MIT license
 └── README.md              # Project overview
-File Organization Philosophy
-Single Page Application: One HTML file as entry point
-Modular Stylesheets: CSS organized by component sections
-Class-based JavaScript: Single JavaScript class managing all functionality
-Documentation-First: Comprehensive docs for maintainability
-🏗️ HTML Architecture
-Semantic Structure
+```
+
+### File Organization Philosophy
+- **Single Page Application**: One HTML file as entry point
+- **Modular Stylesheets**: CSS organized by component sections
+- **Class-based JavaScript**: Single JavaScript class managing all functionality
+- **Documentation-First**: Comprehensive docs for maintainability
+
+## 🏗️ HTML Architecture
+
+### Semantic Structure
+```html
 <!DOCTYPE html>
 <html lang="en">                    <!-- Language declaration -->
 <head>                              <!-- Document metadata -->
@@ -63,8 +75,12 @@ Semantic Structure
   </div>
 </body>
 </html>
-Component Breakdown
-Header Component
+```
+
+### Component Breakdown
+
+#### Header Component
+```html
 <header class="header">
   <div class="header-content">
     <h1 class="app-title">
@@ -74,9 +90,12 @@ Header Component
     <p class="app-subtitle">Streamline your productivity</p>
   </div>
 </header>
-Purpose: Brand identity and application introduction Features: Logo, title, subtitle with semantic hierarchy
+```
+**Purpose**: Brand identity and application introduction
+**Features**: Logo, title, subtitle with semantic hierarchy
 
-Task Input Component
+#### Task Input Component
+```html
 <div class="task-input-section">
   <div class="input-container">
     <input type="text" id="taskInput" placeholder="What needs to be done?" class="task-input">
@@ -86,9 +105,12 @@ Task Input Component
     </button>
   </div>
 </div>
-Purpose: Task creation interface Features: Form input, submit button, keyboard support
+```
+**Purpose**: Task creation interface
+**Features**: Form input, submit button, keyboard support
 
-Task List Component
+#### Task List Component
+```html
 <div class="tasks-section">
   <div class="tasks-header">
     <h2>Your Tasks</h2>
@@ -101,9 +123,12 @@ Task List Component
     <!-- Empty state message -->
   </div>
 </div>
-Purpose: Task display and management Features: Dynamic list, empty state, task counter
+```
+**Purpose**: Task display and management
+**Features**: Dynamic list, empty state, task counter
 
-Statistics Component
+#### Statistics Component
+```html
 <div class="stats-section">
   <div class="stats-grid">
     <div class="stat-card">
@@ -113,16 +138,21 @@ Statistics Component
     <!-- Additional stat cards -->
   </div>
 </div>
-Purpose: Progress visualization Features: Real-time statistics, grid layout
+```
+**Purpose**: Progress visualization
+**Features**: Real-time statistics, grid layout
 
-Accessibility Features
-Semantic HTML5: Proper element hierarchy
-ARIA Labels: Screen reader support
-Keyboard Navigation: Tab order and focus management
-Color Contrast: WCAG AA compliant colors
-Focus Indicators: Visible focus states
-🎨 CSS Architecture
-Organization Strategy
+### Accessibility Features
+- **Semantic HTML5**: Proper element hierarchy
+- **ARIA Labels**: Screen reader support
+- **Keyboard Navigation**: Tab order and focus management
+- **Color Contrast**: WCAG AA compliant colors
+- **Focus Indicators**: Visible focus states
+
+## 🎨 CSS Architecture
+
+### Organization Strategy
+```css
 /* 1. Reset and Base Styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -145,12 +175,16 @@ Organization Strategy
 
 /* 7. Animations */
 @keyframes slideIn { /* Animation definitions */ }
-CSS Methodology
-Component-Based: Each component has dedicated styles
-BEM-like Naming: .component__element--modifier pattern
-Custom Properties: CSS variables for consistency
-Mobile-First: Base styles for mobile, enhanced for desktop
-Design System
+```
+
+### CSS Methodology
+- **Component-Based**: Each component has dedicated styles
+- **BEM-like Naming**: `.component__element--modifier` pattern
+- **Custom Properties**: CSS variables for consistency
+- **Mobile-First**: Base styles for mobile, enhanced for desktop
+
+### Design System
+```css
 :root {
   /* Color Palette */
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -176,7 +210,10 @@ Design System
   --radius-lg: 16px;
   --radius-xl: 20px;
 }
-Responsive Breakpoints
+```
+
+### Responsive Breakpoints
+```css
 /* Mobile First Approach */
 .container {
   /* Base: Mobile styles (< 480px) */
@@ -192,8 +229,12 @@ Responsive Breakpoints
   /* Desktop styles (> 768px) */
   .container { padding: 2rem 1rem; }
 }
-💻 JavaScript Architecture
-Class-Based Structure
+```
+
+## 💻 JavaScript Architecture
+
+### Class-Based Structure
+```javascript
 class TaskFlow {
   constructor() {
     // Initialize application state
@@ -225,7 +266,10 @@ class TaskFlow {
   escapeHtml(unsafe) { /* XSS protection */ }
   showNotification(message, type) { /* User feedback */ }
 }
-Application Lifecycle
+```
+
+### Application Lifecycle
+```javascript
 // 1. DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
   window.taskFlow = new TaskFlow();
@@ -251,7 +295,10 @@ bindEvents() {
     if (e.key === 'Enter') this.addTask();
   });
 }
-State Management
+```
+
+### State Management
+```javascript
 class TaskFlow {
   constructor() {
     // Application State
@@ -275,7 +322,10 @@ class TaskFlow {
     this.updateStats();           // Refresh statistics
   }
 }
-Data Models
+```
+
+### Data Models
+```javascript
 // Task Model
 const taskSchema = {
   id: Number,                    // Unique identifier
@@ -293,10 +343,17 @@ const exampleTask = {
   createdAt: "2024-01-15T10:30:00.000Z",
   completedAt: null
 };
-🔄 Data Flow
-User Interaction Flow
+```
+
+## 🔄 Data Flow
+
+### User Interaction Flow
+```
 User Action → Event Listener → Method Call → State Update → DOM Render
-Detailed Flow Example: Adding a Task
+```
+
+### Detailed Flow Example: Adding a Task
+```
 1. User types in input field
 2. User clicks "Add Task" or presses Enter
 3. Event listener calls addTask() method
@@ -309,7 +366,10 @@ Detailed Flow Example: Adding a Task
 10. Shows success notification
 11. Clears input field
 12. Focuses input for next task
-Data Persistence Flow
+```
+
+### Data Persistence Flow
+```javascript
 // Save Flow
 User Action → State Change → saveTasks() → localStorage.setItem()
 
@@ -318,8 +378,12 @@ Page Load → loadTasks() → localStorage.getItem() → JSON.parse() → State 
 
 // Error Handling
 Try/Catch → Error Logging → Graceful Fallback → User Notification
-🎯 Design Patterns
-Module Pattern
+```
+
+## 🎯 Design Patterns
+
+### Module Pattern
+```javascript
 // Encapsulation through class
 class TaskFlow {
   // Private-like methods (convention)
@@ -335,7 +399,10 @@ class TaskFlow {
     }
   }
 }
-Observer Pattern (Event-Driven)
+```
+
+### Observer Pattern (Event-Driven)
+```javascript
 // Event listeners act as observers
 bindEvents() {
   // Observe input events
@@ -346,7 +413,10 @@ bindEvents() {
   // Observe button clicks
   addTaskBtn.addEventListener('click', () => this.addTask());
 }
-Command Pattern (Method Chaining)
+```
+
+### Command Pattern (Method Chaining)
+```javascript
 // Sequential operations
 addTask() {
   const newTask = this.createTask(taskText);
@@ -356,7 +426,10 @@ addTask() {
       .updateStats()
       .showNotification('Task added!');
 }
-Factory Pattern (Task Creation)
+```
+
+### Factory Pattern (Task Creation)
+```javascript
 createTask(text) {
   return {
     id: this.taskIdCounter++,
@@ -366,8 +439,12 @@ createTask(text) {
     completedAt: null
   };
 }
-⚡ Performance Considerations
-DOM Manipulation Optimization
+```
+
+## ⚡ Performance Considerations
+
+### DOM Manipulation Optimization
+```javascript
 // Batch DOM updates
 renderTasks() {
   const tasksList = document.getElementById('tasksList');
@@ -382,7 +459,10 @@ renderTasks() {
     this.updateStats();
   });
 }
-Memory Management
+```
+
+### Memory Management
+```javascript
 // Clean event listeners
 destructor() {
   // Remove event listeners if needed
@@ -400,7 +480,10 @@ loadTasks() {
     return []; // Graceful fallback
   }
 }
-Lazy Loading & Code Splitting
+```
+
+### Lazy Loading & Code Splitting
+```javascript
 // Conditional feature loading
 showAdvancedFeatures() {
   if (this.tasks.length > 10) {
@@ -410,8 +493,12 @@ showAdvancedFeatures() {
     });
   }
 }
-🌐 Browser Compatibility
-Feature Detection
+```
+
+## 🌐 Browser Compatibility
+
+### Feature Detection
+```javascript
 // Check for localStorage support
 constructor() {
   this.hasLocalStorage = this.checkLocalStorageSupport();
@@ -430,7 +517,10 @@ checkLocalStorageSupport() {
     return false;
   }
 }
-Polyfills and Fallbacks
+```
+
+### Polyfills and Fallbacks
+```javascript
 // Array.find polyfill for older browsers
 if (!Array.prototype.find) {
   Array.prototype.find = function(predicate) {
@@ -442,7 +532,10 @@ if (!Array.prototype.find) {
     return undefined;
   };
 }
-CSS Fallbacks
+```
+
+### CSS Fallbacks
+```css
 /* Progressive enhancement */
 .task-item {
   /* Fallback for older browsers */
@@ -462,8 +555,12 @@ CSS Fallbacks
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
-🔒 Security Considerations
-XSS Prevention
+```
+
+## 🔒 Security Considerations
+
+### XSS Prevention
+```javascript
 // HTML escaping for user input
 escapeHtml(unsafe) {
   return unsafe
@@ -482,7 +579,10 @@ renderTasks() {
     </div>
   `).join('');
 }
-Input Validation
+```
+
+### Input Validation
+```javascript
 addTask() {
   const taskInput = document.getElementById('taskInput');
   const taskText = taskInput.value.trim();
@@ -502,7 +602,10 @@ addTask() {
   const sanitizedText = this.sanitizeInput(taskText);
   // Proceed with task creation
 }
-Data Integrity
+```
+
+### Data Integrity
+```javascript
 // Validate data structure on load
 loadTasks() {
   try {
@@ -521,8 +624,12 @@ loadTasks() {
     return [];
   }
 }
-🧪 Testing Considerations
-Testable Architecture
+```
+
+## 🧪 Testing Considerations
+
+### Testable Architecture
+```javascript
 // Expose methods for testing
 class TaskFlow {
   // Public API for tests
@@ -544,28 +651,34 @@ class TaskFlow {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = TaskFlow;
 }
-Manual Testing Checklist
- Task creation with various inputs
- Task completion toggling
- Task editing with edge cases
- Task deletion confirmation
- Statistics accuracy
- localStorage persistence
- Responsive design breakpoints
- Keyboard navigation
- Error handling
- Browser compatibility
-🔮 Future Architecture Enhancements
-Planned Improvements
-Component System: Break into smaller, reusable components
-State Management: Implement Redux-like state management
-Module System: Split into ES6 modules
-Service Workers: Add offline functionality
-Web Components: Custom elements for reusability
-TypeScript: Add type safety
-Testing Framework: Automated testing setup
-Build System: Webpack/Vite configuration
-Scalability Considerations
+```
+
+### Manual Testing Checklist
+- [ ] Task creation with various inputs
+- [ ] Task completion toggling
+- [ ] Task editing with edge cases
+- [ ] Task deletion confirmation
+- [ ] Statistics accuracy
+- [ ] localStorage persistence
+- [ ] Responsive design breakpoints
+- [ ] Keyboard navigation
+- [ ] Error handling
+- [ ] Browser compatibility
+
+## 🔮 Future Architecture Enhancements
+
+### Planned Improvements
+1. **Component System**: Break into smaller, reusable components
+2. **State Management**: Implement Redux-like state management
+3. **Module System**: Split into ES6 modules
+4. **Service Workers**: Add offline functionality
+5. **Web Components**: Custom elements for reusability
+6. **TypeScript**: Add type safety
+7. **Testing Framework**: Automated testing setup
+8. **Build System**: Webpack/Vite configuration
+
+### Scalability Considerations
+```javascript
 // Future modular structure
 import { TaskStore } from './stores/TaskStore.js';
 import { TaskComponent } from './components/TaskComponent.js';
@@ -580,19 +693,29 @@ class TaskFlowApp {
     this.notifications = new NotificationService();
   }
 }
-📚 Additional Resources
-Learning Resources
-MDN Web Docs - Web standards reference
-JavaScript.info - Modern JavaScript tutorial
-CSS Grid Guide - CSS Grid reference
-Accessibility Guidelines - WCAG 2.1 reference
-Development Tools
-Browser DevTools: Chrome/Firefox/Safari developer tools
-VS Code Extensions: Live Server, ESLint, Prettier
-Performance Tools: Lighthouse, WebPageTest
-Accessibility Tools: axe DevTools, WAVE
-Best Practices
-Google Web Fundamentals
-Clean Code JavaScript
-Airbnb JavaScript Style Guide
+```
+
+---
+
+## 📚 Additional Resources
+
+### Learning Resources
+- [MDN Web Docs](https://developer.mozilla.org/) - Web standards reference
+- [JavaScript.info](https://javascript.info/) - Modern JavaScript tutorial
+- [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) - CSS Grid reference
+- [Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) - WCAG 2.1 reference
+
+### Development Tools
+- **Browser DevTools**: Chrome/Firefox/Safari developer tools
+- **VS Code Extensions**: Live Server, ESLint, Prettier
+- **Performance Tools**: Lighthouse, WebPageTest
+- **Accessibility Tools**: axe DevTools, WAVE
+
+### Best Practices
+- [Google Web Fundamentals](https://developers.google.com/web/fundamentals)
+- [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)
+- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+
+---
+
 This architecture documentation provides a comprehensive overview of TaskFlow's technical implementation. For specific implementation details, refer to the source code files and inline comments.

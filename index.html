@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskFlow - Task Management App</title>
+    
+    <!-- External stylesheet for app styles -->
     <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Google Fonts: Inter (used for modern UI look) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <!-- ===== HEADER ===== -->
         <header class="header">
             <div class="header-content">
                 <h1 class="app-title">
@@ -19,10 +24,16 @@
             </div>
         </header>
 
+        <!-- ===== MAIN CONTENT ===== -->
         <main class="main">
+
+            <!-- Task input field + Add button -->
             <div class="task-input-section">
                 <div class="input-container">
+                    <!-- Input for new tasks -->
                     <input type="text" id="taskInput" placeholder="What needs to be done?" class="task-input">
+                    
+                    <!-- Button to add tasks -->
                     <button id="addTaskBtn" class="add-btn">
                         <span class="add-icon">+</span>
                         Add Task
@@ -30,14 +41,20 @@
                 </div>
             </div>
 
+            <!-- ===== TASK LIST SECTION ===== -->
             <div class="tasks-section">
                 <div class="tasks-header">
                     <h2>Your Tasks</h2>
+                    <!-- Dynamic task counter -->
                     <span id="taskCount" class="task-count">0 tasks</span>
                 </div>
+
+                <!-- Container for dynamically generated tasks -->
                 <div id="tasksList" class="tasks-list">
-                    <!-- Tasks will be dynamically added here -->
+                    <!-- Tasks will be dynamically added here by app.js -->
                 </div>
+
+                <!-- Shown when no tasks exist -->
                 <div id="emptyState" class="empty-state">
                     <div class="empty-icon">✨</div>
                     <h3>No tasks yet</h3>
@@ -45,16 +62,23 @@
                 </div>
             </div>
 
+            <!-- ===== TASK STATS SECTION ===== -->
             <div class="stats-section">
                 <div class="stats-grid">
+                    
+                    <!-- Card: Total tasks -->
                     <div class="stat-card">
                         <span class="stat-number" id="totalTasks">0</span>
                         <span class="stat-label">Total Tasks</span>
                     </div>
+
+                    <!-- Card: Completed tasks -->
                     <div class="stat-card">
                         <span class="stat-number" id="completedTasks">0</span>
                         <span class="stat-label">Completed</span>
                     </div>
+
+                    <!-- Card: Pending tasks -->
                     <div class="stat-card">
                         <span class="stat-number" id="pendingTasks">0</span>
                         <span class="stat-label">Pending</span>
@@ -63,11 +87,13 @@
             </div>
         </main>
 
+        <!-- ===== FOOTER ===== -->
         <footer class="footer">
             <p>&copy; 2024 TaskFlow. Built with HTML, CSS, and JavaScript.</p>
         </footer>
     </div>
 
+    <!-- Main JavaScript file controlling task logic -->
     <script src="scripts/app.js"></script>
 </body>
 </html>

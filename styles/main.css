@@ -1,11 +1,21 @@
-/* Reset and Base Styles */
+/* ================================
+   Reset & Base Styles
+   Normalize margins/paddings, 
+   ensure box-sizing is consistent
+==================================*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*General designs like font, background color*/
+/* ================================
+   Body Styles
+   - Inter font for readability
+   - Gradient background for modern feel
+   - Full-height layout
+   - Comfortable line-height
+==================================*/
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -14,7 +24,12 @@ body {
     color: #333;
 }
 
-/* Container */
+/* ================================
+   Layout Container
+   - Centers app
+   - Restricts width for readability
+   - Uses flex to stack sections vertically
+==================================*/
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -24,7 +39,11 @@ body {
     flex-direction: column;
 }
 
-/* Header */
+/* ================================
+   Header Section
+   - Title + Subtitle with glass effect
+   - Rounded corners, subtle shadow
+==================================*/
 .header {
     text-align: center;
     margin-bottom: 3rem;
@@ -35,7 +54,7 @@ body {
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Glassmorphism */
 }
 
 .app-title {
@@ -46,7 +65,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.5rem; /* spacing between icon and text */
 }
 
 .icon {
@@ -59,12 +78,19 @@ body {
     font-weight: 400;
 }
 
-/* Main Content */
+/* ================================
+   Main Content Wrapper
+   - Expands to fill available space
+==================================*/
 .main {
     flex: 1;
 }
 
-/* Task Input Section */
+/* ================================
+   Task Input Section
+   - Input + Button styled as a card
+   - Rounded, shadowed for emphasis
+==================================*/
 .task-input-section {
     margin-bottom: 2rem;
 }
@@ -79,6 +105,7 @@ body {
     align-items: center;
 }
 
+/* Input field with smooth focus states */
 .task-input {
     flex: 1;
     border: 2px solid #e2e8f0;
@@ -101,6 +128,7 @@ body {
     color: #a0aec0;
 }
 
+/* Add Task button styled with gradient + hover effects */
 .add-btn {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -131,7 +159,10 @@ body {
     font-weight: bold;
 }
 
-/* Tasks Section */
+/* ================================
+   Tasks Section
+   - Styled container with header + list
+==================================*/
 .tasks-section {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
@@ -149,6 +180,7 @@ body {
     border-bottom: 2px solid #f1f5f9;
 }
 
+/* Section title and task count badge */
 .tasks-header h2 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -170,6 +202,7 @@ body {
     gap: 0.75rem;
 }
 
+/* Individual task card */
 .task-item {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -180,6 +213,7 @@ body {
     justify-content: space-between;
     transition: all 0.3s ease;
     cursor: pointer;
+    animation: slideIn 0.3s ease;
 }
 
 .task-item:hover {
@@ -188,12 +222,14 @@ body {
     border-color: #cbd5e0;
 }
 
+/* Completed tasks styling */
 .task-item.completed {
     background: #f0fff4;
     border-color: #9ae6b4;
     opacity: 0.8;
 }
 
+/* Task inner content */
 .task-content {
     display: flex;
     align-items: center;
@@ -201,6 +237,7 @@ body {
     flex: 1;
 }
 
+/* Custom checkbox with checkmark */
 .task-checkbox {
     width: 20px;
     height: 20px;
@@ -227,6 +264,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Task text styles */
 .task-text {
     font-size: 1rem;
     color: #2d3748;
@@ -238,6 +276,7 @@ body {
     color: #718096;
 }
 
+/* Edit/Delete action buttons */
 .task-actions {
     display: flex;
     gap: 0.5rem;
@@ -253,6 +292,7 @@ body {
     font-size: 1.1rem;
 }
 
+/* Icon-specific colors */
 .edit-btn {
     color: #3182ce;
 }
@@ -269,7 +309,10 @@ body {
     background: #fed7d7;
 }
 
-/* Empty State */
+/* ================================
+   Empty State Message
+   - Displayed when no tasks exist
+==================================*/
 .empty-state {
     text-align: center;
     padding: 3rem 2rem;
@@ -287,7 +330,10 @@ body {
     color: #4a5568;
 }
 
-/* Stats Section */
+/* ================================
+   Stats Section
+   - Grid cards summarizing totals
+==================================*/
 .stats-section {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 16px;
@@ -323,7 +369,10 @@ body {
     font-weight: 500;
 }
 
-/* Footer */
+/* ================================
+   Footer
+   - Small muted copyright/info
+==================================*/
 .footer {
     text-align: center;
     margin-top: 2rem;
@@ -332,7 +381,11 @@ body {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
+/* ================================
+   Responsive Breakpoints
+   - Adjusts padding, font sizes
+   - Stacks layouts for mobile
+==================================*/
 @media (max-width: 768px) {
     .container {
         padding: 1rem 0.5rem;
@@ -376,7 +429,10 @@ body {
     }
 }
 
-/* Animation Classes */
+/* ================================
+   Animations
+   - Slide in effect for tasks
+==================================*/
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -386,8 +442,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.task-item {
-    animation: slideIn 0.3s ease;
 }
